@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>메인 페이지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/bxslider/4.2.12/jquery.bxslider.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('.bxslider').bxSlider({
+                auto: true,
+                speed: 500,
+                pause: 4000,
+                mode: 'fade',
+                pager: true,
+                adaptiveHeight: false,
+                touchEnabled : false,
+                minSlides: 1,
+                maxSlides: 4,
+                autoHover: true,
+                slideHeight: 300,
+                slideWidth: 800,
+                slideMargin: 25
+            });
+        });
+    </script>
+</head>
+<body>
+    <h1>메인 페이지 </h1>
+    <div th:replace="/fragments/layout.html :: fragment-body-menu"></div>
+
+
+
+    <ul class="bxslider">
+        <li th:each="x : ${list}">
+            <a th:href="${x.linkUrl}" th:target="${x.target}"><img th:src="${x.imageUrl}"></a>
+        </li>
+    </ul>
+
+</body>
+</html>
